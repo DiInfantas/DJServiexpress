@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, login, registro, rePass, tomadehoras
+from .views import index, login, registro, rePass, tomadehoras, horastomadas, editarhora
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path('registro',registro , name='registro'),
     path('rePass',rePass , name='rePass'),
     path('tomadehoras',tomadehoras , name='tomadehoras'),
+    path('horastomadas', horastomadas , name='horastomadas'),
+    path('editarhora', editarhora , name='editarhora'),
 
-    
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

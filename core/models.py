@@ -1,5 +1,6 @@
-from datetime import timezone
+
 from django.db import models
+
 
 # Create your models here.
 
@@ -26,12 +27,11 @@ class Servicio(models.Model):
 #Modelo para las horas tomadas
 
 class HorasTomadas(models.Model):
-    fecha = models.DateField()
-    hora = models.TimeField()
-    vehiculo = models.CharField(max_length=40)
-    servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+    vehiculo = models.CharField(max_length=40, default='null')
+    servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE, default='otro')
 
     def __str__(self):
-        return f'{self.hora} - {self.vehiculo.patente} - {self.servicio.nombre_servicio}'
+        return f'{self.fecha} - {self.vehiculo} - {self.servicio.nombre_servicio}'
 
 

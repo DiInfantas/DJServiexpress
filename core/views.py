@@ -18,3 +18,7 @@ def rePass (request):
 def tomadehoras (request):
     return render(request, "core/tomadehoras.html")
 
+def horastomadas (request):
+    return render(request, "core/horastomadas.html")
+def editarhora (request):
+    return render(request, "core/editarhora.html")

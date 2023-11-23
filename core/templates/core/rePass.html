@@ -1,46 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'core/layout.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serviexpress</title>
-  <script src="js/main.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+{% block content %}
+<main>
+  {% load static %}
 
-
-<body style="background-color: #e3f2fd;">
-
-  <div class="container-fluid" style="text-align: center;" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
-
-    <nav class="navbar bg-dark border-bottom border-body">
-      <div class="container-fluid">
-        <div class="row justify-content-between align-items-center">
-          <div class="col-auto">
-            <a class="navbar-brand" href="index.html" style="color: #e3f2fd;">
-              <img src="img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-              Serviexpress
-            </a>
-          </div>
-          <div class="col-auto">
-            <a href="tomadehoras.html">
-              <button class="btn btn-light">Agendar Hora</button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
 
     <div class="card" style="width: 30rem; height: 40rem; margin: auto; margin-top: 5rem; margin-bottom: 5rem;">
       <div class="card-body">
-            <form onsubmit="msglogin(event)">
+            <form onsubmit="msglogin(event)" style="text-align: center;">
             <h2>Recuperar contraseña</h2>
             <br>
-            <img src="img/login.png" style=" width: 30%; height: 35%; padding-bottom: 15%;">
+            <img src="{% static 'img/login.png'%}" style=" width: 30%; height: 35%; padding-bottom: 15%;">
             <br>
-            <input type="text" class="form-control" placeholder="Contraseña" aria-label="Username"
+            <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username"
                 aria-describedby="addon-wrapping">
             <br>
             <input type="password" class="form-control" placeholder="Confirmar contraseña" aria-label="Username"
@@ -55,28 +27,4 @@
 </body>
 
 
-<footer class="bg-dark text-light py-4">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-6">
-              <h5>Contacto</h5>
-              <p>Dirección: AntonioVaras 123123131, Santiago</p>
-              <p>Teléfono: (123) 456-7890</p>
-              <p>Email: info@serviexpress.com</p>
-          </div>
-          <div class="col-md-6 text-end">
-              <h5>Síguenos en redes sociales</h5>
-              <ul class="list-inline">
-                  <li class="list-inline-item"><a href="#"><p>www.Instagram.com/Serviexpress</p></i></a></li>
-                  <li class="list-inline-item"><a href="#"><p>www.Facebook.com/Serviexpress</p></i></a></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-
-</html>
+{% endblock %}

@@ -16,8 +16,9 @@ class Usuario (models.Model):
     def __str__(self):
         return self.nom_usuario
 
+
 class Servicio(models.Model):
-    id_servicio = models.AutoField(primary_key=True, unique=True)
+    id_servicio = models.IntegerField(primary_key=True, unique=True)
     nombre_servicio = models.CharField(max_length=40)
 
     def __str__(self):
@@ -27,7 +28,7 @@ class Servicio(models.Model):
 #Modelo para las horas tomadas
 
 class HorasTomadas(models.Model):
-    fecha = models.DateTimeField(auto_now_add=True)
+    fecha_hora = models.DateTimeField()
     vehiculo = models.CharField(max_length=40, default='null')
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE, default='otro')
 

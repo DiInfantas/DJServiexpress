@@ -17,12 +17,16 @@
           <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username"
             aria-describedby="addon-wrapping">
           <br>
-          <button type="submit" class="btn btn-dark" style="padding-top: 1rem; padding-bottom: 1rem; padding-left: 5rem; padding-right: 5rem;">Ingresar</button>
+          <a href="{% url 'horastomadas' %}">
+            <button type="submit" class="btn btn-dark" style="padding-top: 1rem; padding-bottom: 1rem; padding-left: 5rem; padding-right: 5rem;">Ingresar</button>
+          </a>
+          
+
           <br>
           <br>
-          <a href="Registro.html">Crear Cuenta</a>
+          <a href="{% url 'registro' %}">Crear Cuenta</a>
           <br>
-          <a href="rePass.html">Recuperar Contraseña</a>
+          <a href="{% url 'rePass' %}">Recuperar Contraseña</a>
         </form>
 
       </div>

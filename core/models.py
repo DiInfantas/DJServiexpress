@@ -1,38 +1,36 @@
-
 from django.db import models
-
-
+from django.contrib.auth.models import User
 # Create your models here.
 
-#Modelo para el usuario
 
-class Usuario (models.Model):
-    nom_usuario = models.CharField(max_length=40, unique=True, primary_key=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=40)
-    nombre = models.CharField(max_length=30)
-    apellidos = models.CharField(max_length=60)
+
+class Trabajador(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    telefono = models.CharField(max_length=15)
 
     def __str__(self):
-        return self.nom_usuario
+        return self.user.username
 
-
-class Servicio(models.Model):
-    id_servicio = models.IntegerField(primary_key=True, unique=True)
-    nombre_servicio = models.CharField(max_length=40)
-
-    def __str__(self):
-        return self.nombre_servicio
-    
-
-#Modelo para las horas tomadas
-
-class HorasTomadas(models.Model):
-    fecha_hora = models.DateTimeField()
-    vehiculo = models.CharField(max_length=40, default='null')
-    servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE, default='otro')
+class Cliente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    telefono = models.CharField(max_length=15)
 
     def __str__(self):
-        return f'{self.fecha} - {self.vehiculo} - {self.servicio.nombre_servicio}'
+        return f"{self.user.username} -Numero de telefono: {self.telefono}"
 
+class Vehiculo(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    marca = models.CharField(max_length=100)
+    modelo = models.CharField(max_length=100)
+    placa = models.CharField(max_length=10)
+    def __str__(self):
+        return f"Marca: {self.marca}| Modelo: {self.modelo}| Patente: {self.placa}"
 
+class Cita(models.Model):  # Nueva relación con el modelo User
+    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
+    servicio = models.CharField(max_length=200)
+    fecha = models.DateField()
+    hora = models.TimeField()
+
+    def __str__(self):
+        return f"{self.fecha} - {self.hora} - {self.vehiculo} - {self.servicio}"

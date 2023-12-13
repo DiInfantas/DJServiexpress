@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import HorasTomadas, Servicio, Usuario
+from .models import Cita, Vehiculo, Cliente, Trabajador
 # Register your models here.
 
-admin.site.register(HorasTomadas)
-admin.site.register(Servicio)
-admin.site.register(Usuario)
+admin.site.register(Cita)
+admin.site.register(Vehiculo)
+admin.site.register(Cliente)
+admin.site.register(Trabajador)

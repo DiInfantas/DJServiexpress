@@ -14,44 +14,24 @@
                 <h1>Toma de Horas - Taller de Vehículos</h1>
                 <h4>Aqui puede ver sus horas tomadas.</h4>
                 <br>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Cambio de aceite</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Hora: 10:45 </h6>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Fecha: 26/11/23 </h6>
-                                <a href="#" class="card-link">Eliminar</a>
-                                <a href="{% url 'editarhora'%}" class="card-link">Modificar</a>
-                            </div>
-                        </div>
-                    </div>
                 
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Cambio de frenos</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Hora: 12:15 </h6>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Fecha: 27/11/23 </h6>
-                                <a href="#" class="card-link">Eliminar</a>
-                                <a href="#" class="card-link">Modificar</a>
+                    <div class="row">
+                        {%for c in Citas%}
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem; ">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{c.servicio}}</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">{{c.fecha}}</h6>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">{{c.hora}}</h6>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">{{c.vehiculo}}</h6>
+                                    <a href="#" class="card-link">Eliminar</a>
+                                    <a href="{% url 'editarhora'%}" class="card-link">Modificar</a>
+                                    <br>
+                                </div>
                             </div>
-                        </div>
+                        </div>   
+                        {% endfor %}                 
                     </div>
-                
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Mantencion general</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Hora: 12:15 </h6>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Fecha: 29/11/23 </h6>
-                                <a href="#" class="card-link">Eliminar</a>
-                                <a href="{% url 'editarhora'%}" class="card-link">Modificar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
             </div>
 

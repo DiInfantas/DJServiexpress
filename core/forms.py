@@ -9,4 +9,11 @@ class VehiculoForm(forms.ModelForm):
 class CitaForm(forms.ModelForm):
     class Meta:
         model = Cita
-        fields = ['fecha', 'hora', 'servicio', 'vehiculo']
+        fields = '__all__'
+        
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date'}),	
+            'hora': forms.TimeInput(attrs={'type': 'time'})
+        }
+        
+

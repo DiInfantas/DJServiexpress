@@ -49,17 +49,7 @@ def ingresar_vehiculo(request):
         form = VehiculoForm()
     return render(request, 'ingresar_vehiculo.html', {'form': form})
 
-def generar_cita(request):
-    if request.method == 'POST':
-        form = CitaForm(request.POST)
-        if form.is_valid():
-            cita = form.save(commit=False)
-            cita.usuario = request.user  # Asigna el usuario actual a la cita
-            cita.save()
-            return redirect('dashboard')  # Redirige a tu vista de dashboard
-    else:
-        form = CitaForm()
-    return render(request, 'generar_cita.html', {'form': form})
+
 
 
 
@@ -76,7 +66,21 @@ def rePass (request):
     return render(request, "core/rePass.html")
 
 def tomadehoras (request):
-    return render(request, "core/tomadehoras.html")
+    
+    data = {
+        'form': CitaForm(),
+    }
+    if request.method == 'POST':
+        formulario = CitaForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Formulario enviado correctamente"
+        else:
+            data['form'] = formulario
+            print(formulario.errors)
+    
+    
+    return render(request, "core/tomadehoras.html", data)
 
 def horastomadas (request):
     citas = Cita.objects.all()
